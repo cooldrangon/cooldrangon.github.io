@@ -5,19 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>路由全局守卫 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 路由全局守卫date: 2018-08-15 15:54:31tags:—">
+  <meta name="description" content="首先 创建路由配置 const router = new VueRouter({…})然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&amp;gt;{..})每个守卫方法接受三个参数：to ：Route : 即将要进入目标 路由对象from：Route : 当前导航正要离开的路由next：Function: 一下通过一个cli中的实例来进行说明全局守卫的作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="路由全局守卫">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/路由全局守卫/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: 路由全局守卫date: 2018-08-15 15:54:31tags:—">
+<meta property="og:description" content="首先 创建路由配置 const router = new VueRouter({…})然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&amp;gt;{..})每个守卫方法接受三个参数：to ：Route : 即将要进入目标 路由对象from：Route : 当前导航正要离开的路由next：Function: 一下通过一个cli中的实例来进行说明全局守卫的作">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T08:10:15.874Z">
+<meta property="og:updated_time" content="2018-08-15T08:12:50.496Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: 路由全局守卫date: 2018-08-15 15:54:31tags:—">
+<meta name="twitter:title" content="路由全局守卫">
+<meta name="twitter:description" content="首先 创建路由配置 const router = new VueRouter({…})然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&amp;gt;{..})每个守卫方法接受三个参数：to ：Route : 即将要进入目标 路由对象from：Route : 当前导航正要离开的路由next：Function: 一下通过一个cli中的实例来进行说明全局守卫的作">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,24 +67,34 @@
         <section id="main"><article id="post-路由全局守卫" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/路由全局守卫/" class="article-date">
-  <time datetime="2018-08-15T07:54:31.875Z" itemprop="datePublished">2018-08-15</time>
+  <time datetime="2018-08-15T07:54:31.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      路由全局守卫
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 路由全局守卫<br>date: 2018-08-15 15:54:31<br>tags:<br>—<a id="more"></a><br>首先 创建路由配置 const router = new VueRouter({…})<br>然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&gt;{..})<br>每个守卫方法接受三个参数：<br>to ：Route : 即将要进入目标 路由对象<br>from：Route : 当前导航正要离开的路由<br>next：Function:</p>
+        <a id="more"></a>
+<p>首先 创建路由配置 const router = new VueRouter({…})<br>然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&gt;{..})<br>每个守卫方法接受三个参数：<br>to ：Route : 即将要进入目标 路由对象<br>from：Route : 当前导航正要离开的路由<br>next：Function:</p>
 <p>一下通过一个cli中的实例来进行说明全局守卫的作用<br>声明个函数 下面用的<br>2.获取设置的sessionStorage<br>const isLoged = () =&gt;{<br>return sessionStorage.getItem(‘loged’)<br>}<br>首先注册一个全局守卫 在 index.js中（<br>const router = new Router({routes})<br>router.beforeEach((to,from,next)=&gt;{<br>3.判断 如果给路由设置的meta.auth有没有 如果有的话就判断 sessionStorage有没有 如果有就跳转路由 如果没 就跳到 login页面 同时用query传递URL地址中可见的参数 to.fullpath也就是刚才输入的没有跳转的页面的地址<br>if(to.matched.some(route=&gt;route.meta.auth)){<br>isLoged() ? next() : next({path:’/login’,query:{returnURL: to.fullpath}})<br>}else {<br>next()<br>}<br>})<br>）<br>上文是全局守卫的设置 以下是组件中对应全局守卫的设置<br>methods:{<br>1.login函数得由组件中的事件调用当点击按钮时调用login函数 设置sessionStorage<br>login(){<br>sessionStorage.setItem(‘loged’,true)<br>4.如果点击了按钮 那么就会跳转到刚才输入的没有跳转到的页面 如果正常输入就会跳转到首页<br>const path = this.route.query.returnURLthis.router.push({path:path?path:’/’})<br>}<br>}</p>
 <p>想要在cli中运用全局守卫的步骤<br>1.首先按照 vue-cli生成一个cli框架<br>2.在components文件夹中生成组件<br>3.在index.js文件中配置路由组件 并引入组件（也可以单独设置一个routes.js在其中引入组件 并在数组中进行路由配置 并导出 然后在index.js中接收 并在index中再生成一个路由配置对象 并把导入的路由跟数组配置的文件模块放进去 再给路由配置对象.beforeEach 详细见上文）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkuuwc5n0005kgmd608ht8pp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkuuz5xf0005ekmdkuidmtpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +156,7 @@
           </li>
         
           <li>
-            <a href="/2018/08/15/路由全局守卫/">(no title)</a>
+            <a href="/2018/08/15/路由全局守卫/">路由全局守卫</a>
           </li>
         
           <li>
