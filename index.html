@@ -62,82 +62,28 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-主宰" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-关于路由的导航" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/15/主宰/" class="article-date">
-  <time datetime="2018-08-15T07:17:57.000Z" itemprop="datePublished">2018-08-15</time>
+    <a href="/2018/08/15/关于路由的导航/" class="article-date">
+  <time datetime="2018-08-15T07:52:15.331Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/主宰/">前端自动化构建</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br>3.在根目录下创建文件 gulpfile.js<br>4.在gulpfile.js 中引入 var gulp = require(“gulp”) 【下载的模块都需要引入】 [模块下载完成就需要引入使用了]<br>5.当需要的模块下载完并且引入完后 开始创建任务 执行代码就可以了<br>注意 ：： packjson 这个文件是最重要的文件  .gitignore这个是专门屏蔽文件上传的 只需要在里面输入不想传到远程的文件名就可以屏蔽了</p>
-<p>示例代码如下<br>引入模块<br> var gulp = require(‘gulp’),<br>browsersync = require(‘browser-sync’).create(),<br>reload = browsersync.reload,<br>sass =  require(‘gulp-sass’)<br>创建任务 把根目录下的所有的html文件 复制到 dist文件夹中<br>// gulp.task(‘copyhtml’,function(){<br>//   gulp.src(‘./<em>.html’)<br>//   .pipe(gulp.dest(‘./dist’))<br>// })<br>gulp.task(‘copycss’,function(){<br>  gulp.src(‘./scss/</em>.scss’)<br>  .pipe(sass()).on(‘error’,sass.logError) 加上这一句是为了防止出错时跳出程序 加上这句后出错后显示报错信息但是不跳出监听程序<br>  .pipe(gulp.dest(‘./css’))<br>})<br>// gulp.task(‘copyjs’,function(){<br>//   gulp.src(‘./js/<em>.js’)<br>//   .pipe(gulp.dest(‘./dist/js’))<br>// })<br>// gulp.task(‘copyimg’,function(){<br>//   gulp.src(‘./img/</em>.{png,jpg,jif}’)<br>//   .pipe(gulp.dest(‘./dist/img’))<br>// })<br>这个是监听上面的文件的改变的<br>// gulp.task(‘browser-sync’,[‘copyhtml’,’copycss’,’copyjs’,’copyimg’],function(){<br>//   browsersync.init({<br>//     server:{<br>//       baseDir:”./“<br>//     },<br>//     open: “external”<br>//   })<br>// })<br>gulp.task(‘browser-sync’,[‘copycss’],function(){<br>  browsersync.init({<br>    server:{<br>      baseDir:”./“<br>    },<br>    open: “external”<br>  })<br>})</p>
-<p>// gulp.watch(‘./<em>.html’,[‘copyhtml’]).on(‘change’,reload)<br>gulp.watch(‘./scss/</em>.scss’,[‘copycss’]).on(‘change’,reload)<br>gulp.watch(‘./<em>.html’).on(‘change’,reload)<br>gulp.watch(‘./js/</em>.js’).on(‘change’,reload)<br>// gulp.watch(‘./js/<em>.js’,[‘copyjs’]).on(‘change’,reload)<br>// gulp.watch(‘./img/</em>.{png,jpg,jif}’,[‘copyimg’]).on(‘change’,reload)</p>
-
+        <hr>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/15/关于路由的导航/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkutwrfd0001qkmd8e3ybyxn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/15/测试/" class="article-date">
-  <time datetime="2018-08-15T07:02:05.000Z" itemprop="datePublished">2018-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/测试/">vue-cli的构建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.刚开始的时候 在 命令行输入 cnpm install -g vue-cli 然后会得到vue命令 可以用vue list 展示所有的模板</p>
-<p>vue init 模板 目录 模板是使用什么模板 目录就是项目目录 如果有项目文件了 就不用写 例：vue init webpack demo 会创建一个demo文件夹 一路回车 但是到ESlint 要 no 最后会有三个选项 选最后一个</p>
-<p>cd 创建的文件名</p>
-<p>cnpm install el：“#app” 和 template如果在一起 后者覆盖前者<br>npm start 会生成一个 8080</p>
-<p>export default 导出组件配置对象<br>import 模块名 from ‘路径’</p>
-<p>总结就是如果想把组件放进父组件中 就从本文件中导出 在父组件文件中导入 并写标签 因为创建vue文件的时候 自然生成了export default配置对象 在里面写的任何东西都可以在别的vue文件中接收到</p>
-<p>所有的东西都是模块化引入 不管是 js 还是别的需要的文件 都可以在 cnpm 下载完成模块后引入<br>当创建完成后在src文件中会有三种文件 这三种文件各自有各自的作用</p>
-<p>1.是src 文件下的components文件 在这个文件中是存放vue组件的文件这个文件中存放了所有的 建立项目所需要的组件 的模板 和函数 数据 并最终把他们全部导出，<br>2.是src文件下的 router文件中的index.js 在这个文件中接收了components文件中所有的组件导出的内容并把他们在其中的routes中与路由绑定在一起 最后导出</p>
-<p>3.是 src文件下的 index.js 这个文件主要的作用就是引入在命令窗口下载项目所需要的模块 同时还引入了index.js导出的所有组件和路由配置 如果是专门为vue制作的模块在import引入后还需要用 vue.use(模块名) 声明下 最后就是创建了new vue组件对象把app这个最大的组件放进去 同时把从 index.js组件中导出的组件和路由配置的文件放进去（就一句话而已 呜呜 看了半天才理清楚关系）</p>
-<p>最后总结 用cli就是玩模块 把需要的模块导入 然后用 把需要导出的模块导出就可以</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/测试/" data-id="cjkutwrfk0002qkmd4cfgbesu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjkuua6ud00017cmd67349afz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkutwrf30000qkmd027bpqz2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkuua6tz00007cmdtq98fpn9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -223,11 +169,7 @@
       <ul>
         
           <li>
-            <a href="/2018/08/15/主宰/">前端自动化构建</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/测试/">vue-cli的构建</a>
+            <a href="/2018/08/15/关于路由的导航/">(no title)</a>
           </li>
         
           <li>
