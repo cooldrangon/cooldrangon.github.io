@@ -7,17 +7,17 @@
   
   <title>前端自动化构建 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var g">
+  <meta name="description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端自动化构建">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/主宰/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var g">
+<meta property="og:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T07:37:38.992Z">
+<meta property="og:updated_time" content="2018-08-15T08:07:43.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端自动化构建">
-<meta name="twitter:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var g">
+<meta name="twitter:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】3.在根目录下创建文件 gulpfile.js4.在gulpfile.js 中引入 var">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -86,14 +86,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br>3.在根目录下创建文件 gulpfile.js<br>4.在gulpfile.js 中引入 var gulp = require(“gulp”) 【下载的模块都需要引入】 [模块下载完成就需要引入使用了]<br>5.当需要的模块下载完并且引入完后 开始创建任务 执行代码就可以了<br>注意 ：： packjson 这个文件是最重要的文件  .gitignore这个是专门屏蔽文件上传的 只需要在里面输入不想传到远程的文件名就可以屏蔽了</p>
+        <a id="more"></a>
+<p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br>3.在根目录下创建文件 gulpfile.js<br>4.在gulpfile.js 中引入 var gulp = require(“gulp”) 【下载的模块都需要引入】 [模块下载完成就需要引入使用了]<br>5.当需要的模块下载完并且引入完后 开始创建任务 执行代码就可以了<br>注意 ：： packjson 这个文件是最重要的文件  .gitignore这个是专门屏蔽文件上传的 只需要在里面输入不想传到远程的文件名就可以屏蔽了</p>
 <p>示例代码如下<br>引入模块<br> var gulp = require(‘gulp’),<br>browsersync = require(‘browser-sync’).create(),<br>reload = browsersync.reload,<br>sass =  require(‘gulp-sass’)<br>创建任务 把根目录下的所有的html文件 复制到 dist文件夹中<br>// gulp.task(‘copyhtml’,function(){<br>//   gulp.src(‘./<em>.html’)<br>//   .pipe(gulp.dest(‘./dist’))<br>// })<br>gulp.task(‘copycss’,function(){<br>  gulp.src(‘./scss/</em>.scss’)<br>  .pipe(sass()).on(‘error’,sass.logError) 加上这一句是为了防止出错时跳出程序 加上这句后出错后显示报错信息但是不跳出监听程序<br>  .pipe(gulp.dest(‘./css’))<br>})<br>// gulp.task(‘copyjs’,function(){<br>//   gulp.src(‘./js/<em>.js’)<br>//   .pipe(gulp.dest(‘./dist/js’))<br>// })<br>// gulp.task(‘copyimg’,function(){<br>//   gulp.src(‘./img/</em>.{png,jpg,jif}’)<br>//   .pipe(gulp.dest(‘./dist/img’))<br>// })<br>这个是监听上面的文件的改变的<br>// gulp.task(‘browser-sync’,[‘copyhtml’,’copycss’,’copyjs’,’copyimg’],function(){<br>//   browsersync.init({<br>//     server:{<br>//       baseDir:”./“<br>//     },<br>//     open: “external”<br>//   })<br>// })<br>gulp.task(‘browser-sync’,[‘copycss’],function(){<br>  browsersync.init({<br>    server:{<br>      baseDir:”./“<br>    },<br>    open: “external”<br>  })<br>})</p>
 <p>// gulp.watch(‘./<em>.html’,[‘copyhtml’]).on(‘change’,reload)<br>gulp.watch(‘./scss/</em>.scss’,[‘copycss’]).on(‘change’,reload)<br>gulp.watch(‘./<em>.html’).on(‘change’,reload)<br>gulp.watch(‘./js/</em>.js’).on(‘change’,reload)<br>// gulp.watch(‘./js/<em>.js’,[‘copyjs’]).on(‘change’,reload)<br>// gulp.watch(‘./img/</em>.{png,jpg,jif}’,[‘copyimg’]).on(‘change’,reload)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkutwrfd0001qkmd8e3ybyxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkuusmwd000198mddq7pajw5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,10 +103,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2018/08/15/关于路由的导航/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于路由的导航
+        
+      </div>
+    </a>
   
-    <a href="/2018/08/15/测试/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2018/08/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">vue-cli的构建</div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>
@@ -142,11 +152,19 @@
       <ul>
         
           <li>
-            <a href="/2018/08/15/主宰/">前端自动化构建</a>
+            <a href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
           </li>
         
           <li>
-            <a href="/2018/08/15/测试/">vue-cli的构建</a>
+            <a href="/2018/08/15/路由全局守卫/">路由全局守卫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/主宰/">前端自动化构建</a>
           </li>
         
           <li>
