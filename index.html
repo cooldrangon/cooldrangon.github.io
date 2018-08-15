@@ -65,17 +65,26 @@
     <article id="post-用cli引接口从数据库渲染文件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/用cli引接口从数据库渲染文件/" class="article-date">
-  <time datetime="2018-08-15T07:56:32.261Z" itemprop="datePublished">2018-08-15</time>
+  <time datetime="2018-08-15T07:56:32.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 用cli引接口从数据库渲染文件<br>date: 2018-08-15 15:56:32<br>tags:<br>—
+        <p>1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）<br>2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）<br>3.在文件中有 aritcle文件下的index文件里面有接口<br>
         
           <p class="article-more-link">
             <a href="/2018/08/15/用cli引接口从数据库渲染文件/#more">Read More</a>
@@ -84,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkuuz5xa0003ekmd796kaqkn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkuv11fu0004awmd3ru1f93q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -116,15 +125,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>首先 创建路由配置 const router = new VueRouter({…})<br>然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&gt;{..})<br>每个守卫方法接受三个参数：<br>to ：Route : 即将要进入目标 路由对象<br>from：Route : 当前导航正要离开的路由<br>next：Function:</p>
-<p>一下通过一个cli中的实例来进行说明全局守卫的作用<br>声明个函数 下面用的<br>2.获取设置的sessionStorage<br>const isLoged = () =&gt;{<br>return sessionStorage.getItem(‘loged’)<br>}<br>首先注册一个全局守卫 在 index.js中（<br>const router = new Router({routes})<br>router.beforeEach((to,from,next)=&gt;{<br>3.判断 如果给路由设置的meta.auth有没有 如果有的话就判断 sessionStorage有没有 如果有就跳转路由 如果没 就跳到 login页面 同时用query传递URL地址中可见的参数 to.fullpath也就是刚才输入的没有跳转的页面的地址<br>if(to.matched.some(route=&gt;route.meta.auth)){<br>isLoged() ? next() : next({path:’/login’,query:{returnURL: to.fullpath}})<br>}else {<br>next()<br>}<br>})<br>）<br>上文是全局守卫的设置 以下是组件中对应全局守卫的设置<br>methods:{<br>1.login函数得由组件中的事件调用当点击按钮时调用login函数 设置sessionStorage<br>login(){<br>sessionStorage.setItem(‘loged’,true)<br>4.如果点击了按钮 那么就会跳转到刚才输入的没有跳转到的页面 如果正常输入就会跳转到首页<br>const path = this.route.query.returnURLthis.router.push({path:path?path:’/’})<br>}<br>}</p>
-<p>想要在cli中运用全局守卫的步骤<br>1.首先按照 vue-cli生成一个cli框架<br>2.在components文件夹中生成组件<br>3.在index.js文件中配置路由组件 并引入组件（也可以单独设置一个routes.js在其中引入组件 并在数组中进行路由配置 并导出 然后在index.js中接收 并在index中再生成一个路由配置对象 并把导入的路由跟数组配置的文件模块放进去 再给路由配置对象.beforeEach 详细见上文）</p>
-
+        <p>首先 创建路由配置 const router = new VueRouter({…})<br>然后注册一个全局的前置守卫 router.beforeEach((to,from,next)=&gt;{..})<br>每个守卫方法接受三个参数：<br>to ：Route : 即将要进入目标 路由对象<br>from：Route : 当前导航正要离开的路由<br>next：Function:<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/15/路由全局守卫/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkuuz5xf0005ekmdkuidmtpj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkuv11fx0005awmdkvjgac44" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,17 +147,26 @@
     <article id="post-关于路由的导航" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/关于路由的导航/" class="article-date">
-  <time datetime="2018-08-15T07:52:15.331Z" itemprop="datePublished">2018-08-15</time>
+  <time datetime="2018-08-15T07:52:15.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 关于路由的导航<br>date: 2018-08-15 15:52:15<br>tags:<br>—
+        <p>1.导航：<br>声明式导航 to=“路由路径”<br>所谓 router-link就是声明式导航<br>
         
           <p class="article-more-link">
             <a href="/2018/08/15/关于路由的导航/#more">Read More</a>
@@ -156,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjkuuz5x30001ekmd2uskir0u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjkuv11fn0002awmdj10plypy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,17 +188,26 @@
     <article id="post-主宰" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/主宰/" class="article-date">
-  <time datetime="2018-08-15T07:17:57.921Z" itemprop="datePublished">2018-08-15</time>
+  <time datetime="2018-08-15T07:17:57.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/主宰/">前端自动化构建</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 前端自动化构建<br>date: 2018-08-15 15:17:57<br>tags:<br>—
+        <p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br>
         
           <p class="article-more-link">
             <a href="/2018/08/15/主宰/#more">Read More</a>
@@ -188,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkuuz5x70002ekmdh4koe7xr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkuv11fk0001awmd59ewi3an" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,17 +229,27 @@
     <article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/测试/" class="article-date">
-  <time datetime="2018-08-15T07:02:05.269Z" itemprop="datePublished">2018-08-15</time>
+  <time datetime="2018-08-15T07:02:05.000Z" itemprop="datePublished">2018-08-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/测试/">vue-cli的构建</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: vue-cli的构建<br>date: 2018-08-15 15:02:05<br>tags:<br>—
+        <p>1.刚开始的时候 在 命令行输入 cnpm install -g vue-cli 然后会得到vue命令 可以用vue list 展示所有的模板</p>
+<p>vue init 模板 目录 模板是使用什么模板 目录就是项目目录 如果有项目文件了 就不用写 例：vue init webpack demo 会创建一个demo文件夹 一路回车 但是到ESlint 要 no 最后会有三个选项 选最后一个<br>
         
           <p class="article-more-link">
             <a href="/2018/08/15/测试/#more">Read More</a>
@@ -220,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/测试/" data-id="cjkuuz5xc0004ekmdfa7v84d2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/测试/" data-id="cjkuv11fs0003awmdijx74ndc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkuuz5wt0000ekmd97q3j3xl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkuv11eo0000awmd6s8tys20" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +344,7 @@
       <ul>
         
           <li>
-            <a href="/2018/08/15/用cli引接口从数据库渲染文件/">(no title)</a>
+            <a href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
           </li>
         
           <li>
@@ -314,15 +352,15 @@
           </li>
         
           <li>
-            <a href="/2018/08/15/关于路由的导航/">(no title)</a>
+            <a href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
           </li>
         
           <li>
-            <a href="/2018/08/15/主宰/">(no title)</a>
+            <a href="/2018/08/15/主宰/">前端自动化构建</a>
           </li>
         
           <li>
-            <a href="/2018/08/15/测试/">(no title)</a>
+            <a href="/2018/08/15/测试/">vue-cli的构建</a>
           </li>
         
       </ul>
