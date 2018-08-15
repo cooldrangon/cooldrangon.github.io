@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/主宰/">主宰</a>
+      <a class="article-title" href="/2018/08/15/主宰/">前端自动化构建</a>
     </h1>
   
 
@@ -84,12 +84,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>测试内容</p>
+        <p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br>3.在根目录下创建文件 gulpfile.js<br>4.在gulpfile.js 中引入 var gulp = require(“gulp”) 【下载的模块都需要引入】 [模块下载完成就需要引入使用了]<br>5.当需要的模块下载完并且引入完后 开始创建任务 执行代码就可以了<br>注意 ：： packjson 这个文件是最重要的文件  .gitignore这个是专门屏蔽文件上传的 只需要在里面输入不想传到远程的文件名就可以屏蔽了</p>
+<p>示例代码如下<br>引入模块<br> var gulp = require(‘gulp’),<br>browsersync = require(‘browser-sync’).create(),<br>reload = browsersync.reload,<br>sass =  require(‘gulp-sass’)<br>创建任务 把根目录下的所有的html文件 复制到 dist文件夹中<br>// gulp.task(‘copyhtml’,function(){<br>//   gulp.src(‘./<em>.html’)<br>//   .pipe(gulp.dest(‘./dist’))<br>// })<br>gulp.task(‘copycss’,function(){<br>  gulp.src(‘./scss/</em>.scss’)<br>  .pipe(sass()).on(‘error’,sass.logError) 加上这一句是为了防止出错时跳出程序 加上这句后出错后显示报错信息但是不跳出监听程序<br>  .pipe(gulp.dest(‘./css’))<br>})<br>// gulp.task(‘copyjs’,function(){<br>//   gulp.src(‘./js/<em>.js’)<br>//   .pipe(gulp.dest(‘./dist/js’))<br>// })<br>// gulp.task(‘copyimg’,function(){<br>//   gulp.src(‘./img/</em>.{png,jpg,jif}’)<br>//   .pipe(gulp.dest(‘./dist/img’))<br>// })<br>这个是监听上面的文件的改变的<br>// gulp.task(‘browser-sync’,[‘copyhtml’,’copycss’,’copyjs’,’copyimg’],function(){<br>//   browsersync.init({<br>//     server:{<br>//       baseDir:”./“<br>//     },<br>//     open: “external”<br>//   })<br>// })<br>gulp.task(‘browser-sync’,[‘copycss’],function(){<br>  browsersync.init({<br>    server:{<br>      baseDir:”./“<br>    },<br>    open: “external”<br>  })<br>})</p>
+<p>// gulp.watch(‘./<em>.html’,[‘copyhtml’]).on(‘change’,reload)<br>gulp.watch(‘./scss/</em>.scss’,[‘copycss’]).on(‘change’,reload)<br>gulp.watch(‘./<em>.html’).on(‘change’,reload)<br>gulp.watch(‘./js/</em>.js’).on(‘change’,reload)<br>// gulp.watch(‘./js/<em>.js’,[‘copyjs’]).on(‘change’,reload)<br>// gulp.watch(‘./img/</em>.{png,jpg,jif}’,[‘copyimg’]).on(‘change’,reload)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkut1c7n000134mddhukkg9w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/主宰/" data-id="cjkutqojf0000q8mdnoxpo05g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/测试/" data-id="cjkut1c7s000234mdvw1iidh9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/测试/" data-id="cjkutqojs0002q8md42f96feq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkut1c7e000034mdm91d3wy3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/hello-world/" data-id="cjkutqojo0001q8mdhrvwxnm2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +214,7 @@
       <ul>
         
           <li>
-            <a href="/2018/08/15/主宰/">主宰</a>
+            <a href="/2018/08/15/主宰/">前端自动化构建</a>
           </li>
         
           <li>
