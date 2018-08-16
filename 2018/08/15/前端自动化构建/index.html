@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端自动化构建 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端自动化构建">
+<meta property="og:url" content="http://yoursite.com/2018/08/15/前端自动化构建/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-16T08:06:22.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端自动化构建">
+<meta name="twitter:description" content="1.全局安装gulp   cnpm  i  –g  gulp2.本地安装gulp   cnpm  i –save gulp    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】    本地安装 browser-sync 【实现监听功能】">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端自动化构建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/15/前端自动化构建/" class="article-date">
+  <time datetime="2018-08-15T07:17:57.000Z" itemprop="datePublished">2018-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端自动化构建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.全局安装gulp   cnpm  i  –g  gulp<br>2.本地安装gulp   cnpm  i –save gulp<br>    本地安装 gulp -sass 【为了在里面完成css代码 在里面可以使用在css中不能使用的属性嵌套之类的东西 】<br>    本地安装 browser-sync 【实现监听功能】<br><a id="more"></a><br>3.在根目录下创建文件 gulpfile.js<br>4.在gulpfile.js 中引入 var gulp = require(“gulp”) 【下载的模块都需要引入】 [模块下载完成就需要引入使用了]<br>5.当需要的模块下载完并且引入完后 开始创建任务 执行代码就可以了<br>注意 ：： packjson 这个文件是最重要的文件  .gitignore这个是专门屏蔽文件上传的 只需要在里面输入不想传到远程的文件名就可以屏蔽了</p>
+<p>示例代码如下<br>引入模块<br> var gulp = require(‘gulp’),<br>browsersync = require(‘browser-sync’).create(),<br>reload = browsersync.reload,<br>sass =  require(‘gulp-sass’)<br>创建任务 把根目录下的所有的html文件 复制到 dist文件夹中<br>// gulp.task(‘copyhtml’,function(){<br>//   gulp.src(‘./<em>.html’)<br>//   .pipe(gulp.dest(‘./dist’))<br>// })<br>gulp.task(‘copycss’,function(){<br>  gulp.src(‘./scss/</em>.scss’)<br>  .pipe(sass()).on(‘error’,sass.logError) 加上这一句是为了防止出错时跳出程序 加上这句后出错后显示报错信息但是不跳出监听程序<br>  .pipe(gulp.dest(‘./css’))<br>})<br>// gulp.task(‘copyjs’,function(){<br>//   gulp.src(‘./js/<em>.js’)<br>//   .pipe(gulp.dest(‘./dist/js’))<br>// })<br>// gulp.task(‘copyimg’,function(){<br>//   gulp.src(‘./img/</em>.{png,jpg,jif}’)<br>//   .pipe(gulp.dest(‘./dist/img’))<br>// })<br>这个是监听上面的文件的改变的<br>// gulp.task(‘browser-sync’,[‘copyhtml’,’copycss’,’copyjs’,’copyimg’],function(){<br>//   browsersync.init({<br>//     server:{<br>//       baseDir:”./“<br>//     },<br>//     open: “external”<br>//   })<br>// })<br>gulp.task(‘browser-sync’,[‘copycss’],function(){<br>  browsersync.init({<br>    server:{<br>      baseDir:”./“<br>    },<br>    open: “external”<br>  })<br>})</p>
+<p>// gulp.watch(‘./<em>.html’,[‘copyhtml’]).on(‘change’,reload)<br>gulp.watch(‘./scss/</em>.scss’,[‘copycss’]).on(‘change’,reload)<br>gulp.watch(‘./<em>.html’).on(‘change’,reload)<br>gulp.watch(‘./js/</em>.js’).on(‘change’,reload)<br>// gulp.watch(‘./js/<em>.js’,[‘copyjs’]).on(‘change’,reload)<br>// gulp.watch(‘./img/</em>.{png,jpg,jif}’,[‘copyimg’]).on(‘change’,reload)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/15/前端自动化构建/" data-id="cjkwa7a8v00033gmdt4z3r7v9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/15/关于路由的导航/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于路由的导航
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/15/vue-cli构建/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue-cli的构建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/路由全局守卫/">路由全局守卫</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/前端自动化构建/">前端自动化构建</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/vue-cli构建/">vue-cli的构建</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

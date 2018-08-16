@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）3.在文件中有 aritcle文件下的index文件里面有接口">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-16T04:20:57.599Z">
+<meta property="og:updated_time" content="2018-08-16T08:05:02.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用cli引接口从数据库渲染文件">
 <meta name="twitter:description" content="1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）3.在文件中有 aritcle文件下的index文件里面有接口">
@@ -91,12 +91,18 @@
     this.comments = data.res
   })
 },
-</code></pre><p>  },<br>  watch: {<br>    ‘$route’: {<br>      handler: ‘getArticleDetail’,<br>      immediate: true<br>    }<br>  }<br>  9.当需要登陆验证时<br>    1.需要在main.js里面写一个<br>       axios.defaults.headers.common[‘Authorization’] = (()=&gt;{<br>         return ‘Bearer ‘//注意这里有个空格 + localStorage.getItem(‘token’)<br>       })()<br>    2.创建登录组件并在组件中写</p>
-
+</code></pre><p>  },<br>  watch: {<br>    ‘$route’: {<br>      handler: ‘getArticleDetail’,<br>      immediate: true<br>    }<br>  }<br>  9.当需要登陆验证时<br>    1.需要在main.js里面写一个<br>       axios.defaults.headers.common[‘Authorization’] = (()=&gt;{<br>         return ‘Bearer ‘//注意这里有个空格 + localStorage.getItem(‘token’)<br>       })()<br>    2.创建登录组件并在组件中写上<br>      Login() {<br>      this.axios.post(<code>/user/${this.email}</code>,{password:this.password}).then((res)=&gt;res.data).then(data=&gt;{<br>        if(data.res_code===200){<br>          localStorage.setItem(‘user’,JSON.stringify(data.res.user))<br>          localStorage.setItem(‘token’,data.res.token)<br>          const path = this.$route.query.returnURL<br>          this.$router.push(path?path:’/‘)<br>        }else{<br>          alert(data.res_msg)<br>        }<br>      }<br>    }<br>    10.当主页面都渲染完成后在主页面的子组件内给需要的地方套上router-link标签 里面的 :to=”{name:’路径名’，params:{id:article.id}}”<br>    然后在methods里面写axios请求</p>
+<pre><code>再然后在底下写监听路由变化的 watch:{
+  &apos;$route&apos;:{
+    handler:&apos;刚才在methods中封装的axios函数名&apos;
+    immediate:true
+  }
+}
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkw7pofv0003ywmd03psvibb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkwa7a8x00043gmdpysrx5vj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,11 +163,11 @@
           </li>
         
           <li>
-            <a href="/2018/08/15/主宰/">前端自动化构建</a>
+            <a href="/2018/08/15/前端自动化构建/">前端自动化构建</a>
           </li>
         
           <li>
-            <a href="/2018/08/15/测试/">vue-cli的构建</a>
+            <a href="/2018/08/15/vue-cli构建/">vue-cli的构建</a>
           </li>
         
       </ul>
