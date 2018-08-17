@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T07:16:00.706Z">
+<meta property="og:updated_time" content="2018-08-17T07:19:21.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue动画过渡效果实现">
 <meta name="twitter:description" content="1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态">
@@ -87,12 +87,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态<br><a id="more"></a><br>但是如果没有定位的话 两个组件间出现过渡时会出现一个把另一个挤走或变形的状态 所以可以在两个active中添加定位属性<br>2.同时生效的进入和离开的过度不能满足所有的要求 所以vue提供了过渡模式<br>  in-out:新元素先进行过渡 完成之后当前元素过渡离开<br>  out-in:当前元素先进行过渡 完成之后新元素过渡进入<br>  示例代码如下 此示例是两个路由组件之间切换的过渡<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div&gt;</span><br><span class="line">  &lt;ArticleNav&gt;&lt;/ArticleNav&gt;</span><br><span class="line">   //首先 给 router-view 套上transition标签 router-view代表了所有的子路由组件渲染的结果</span><br><span class="line">   //在给其起一个动态名字</span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;transition :name=&quot;slide&quot;&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/transition&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ArticleNav from &apos;./ArticleNav&apos;</span><br><span class="line">export default &#123;</span><br><span class="line">  components:&#123;</span><br><span class="line">    ArticleNav</span><br><span class="line">  &#125;,</span><br><span class="line">//返回一个动态名字</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">      slide:&apos;slide-right&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .container&#123;</span><br><span class="line">    overflow-x:hidden;</span><br><span class="line">    position:relative;</span><br><span class="line">    min-height:100vh;</span><br><span class="line">  &#125;</span><br><span class="line">  给其加过渡效果</span><br><span class="line">  .slide-right-enter&#123;</span><br><span class="line">    transform:translate3d(100%, 0, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  .slide-right-enter-to&#123;</span><br><span class="line">    transform:translate3d(0, 0, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  .slide-right-leave&#123;</span><br><span class="line">    transform:translate3d(0, 0, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  .slide-right-leave-to&#123;</span><br><span class="line">    transform:translate3d(-50%, 0, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  .slide-right-enter-active, .slide-right-leave-active&#123;</span><br><span class="line">    background: #fff;</span><br><span class="line">    transition: transform .5s;</span><br><span class="line">    min-height:100vh;</span><br><span class="line">    position:absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 15px;</span><br><span class="line">    right: 15px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<p>  (<a href="https://www.jianshu.com/p/b03a8d7b1719){:target=&quot;_blank&quot;}" target="_blank" rel="noopener">https://www.jianshu.com/p/b03a8d7b1719){:target=&quot;_blank&quot;}</a></p>
+<p>  (<a href="https://www.jianshu.com/p/b03a8d7b1719){target=&quot;_blank&quot;}" target="_blank" rel="noopener">https://www.jianshu.com/p/b03a8d7b1719){target=&quot;_blank&quot;}</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjkxntz8b0000m4mduuz2tg61" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjkxse0p10006lwmdfqhi9vl1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -100,6 +100,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/17/日常报错信息/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          日常报错信息
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/15/用cli引接口从数据库渲染文件/" id="article-nav-older" class="article-nav-link-wrap">
@@ -141,6 +150,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/17/日常报错信息/">日常报错信息</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/17/vue动画过渡效果实现/">vue动画过渡效果实现</a>
           </li>
         
@@ -154,10 +167,6 @@
         
           <li>
             <a href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/前端自动化构建/">前端自动化构建</a>
           </li>
         
       </ul>
