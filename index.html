@@ -62,6 +62,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue动画过渡效果实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/17/vue动画过渡效果实现/" class="article-date">
+  <time datetime="2018-08-17T04:14:23.000Z" itemprop="datePublished">2018-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/vue动画过渡效果实现/">vue动画过渡效果实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态<br>但是如果没有定位的话 两个组件间出现过渡时会出现一个把另一个挤走或变形的状态 所以可以在两个active中添加定位属性<br>2.同时生效的进入和离开的过度不能满足所有的要求 所以vue提供了过渡模式<br>  in-out:新元素先进行过渡 完成之后当前元素过渡离开<br>  out-in:当前元素先进行过渡 完成之后新元素过渡进入</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjkxloj5m0001xsmdsgsuanl0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-用cli引接口从数据库渲染文件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/15/用cli引接口从数据库渲染文件/" class="article-date">
@@ -93,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkxfe32f0003t0mdpfrty3t7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkxloj5s0003xsmdg6dsj600" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkxfe32h0004t0md0u69jpjg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjkxloj6y0005xsmdslxutake" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjkxfe3280001t0mdvf1phqc9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjkxloj6h0004xsmdylws1457" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/前端自动化构建/" data-id="cjkxfe32c0002t0mdgutp9ew9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/前端自动化构建/" data-id="cjkxloj5q0002xsmdr4yh3hj5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vue-cli构建/" data-id="cjkxfe31y0000t0mdz61vnd35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/vue-cli构建/" data-id="cjkxloj5e0000xsmdx61xsn0x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,6 +336,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/17/vue动画过渡效果实现/">vue动画过渡效果实现</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
           </li>
         
@@ -312,10 +353,6 @@
         
           <li>
             <a href="/2018/08/15/前端自动化构建/">前端自动化构建</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/vue-cli构建/">vue-cli的构建</a>
           </li>
         
       </ul>

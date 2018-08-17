@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018 | Hexo</title>
+  <title>vue动画过渡效果实现 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态但是如果没有定位的话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue动画过渡效果实现">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/vue动画过渡效果实现/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态但是如果没有定位的话">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-17T06:13:05.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="vue动画过渡效果实现">
+<meta name="twitter:description" content="1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态但是如果没有定位的话">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,135 +64,52 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/17/vue动画过渡效果实现/" class="archive-article-date">
-  <time datetime="2018-08-17T04:14:23.000Z" itemprop="datePublished">Aug 17</time>
+        <section id="main"><article id="post-vue动画过渡效果实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/17/vue动画过渡效果实现/" class="article-date">
+  <time datetime="2018-08-17T04:14:23.000Z" itemprop="datePublished">2018-08-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/17/vue动画过渡效果实现/">vue动画过渡效果实现</a>
+    <h1 class="article-title" itemprop="name">
+      vue动画过渡效果实现
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/15/用cli引接口从数据库渲染文件/" class="archive-article-date">
-  <time datetime="2018-08-15T07:56:32.000Z" itemprop="datePublished">Aug 15</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/用cli引接口从数据库渲染文件/">用cli引接口从数据库渲染文件</a>
-    </h1>
-  
+        <p>1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态<br>但是如果没有定位的话 两个组件间出现过渡时会出现一个把另一个挤走或变形的状态 所以可以在两个active中添加定位属性<br>2.同时生效的进入和离开的过度不能满足所有的要求 所以vue提供了过渡模式<br>  in-out:新元素先进行过渡 完成之后当前元素过渡离开<br>  out-in:当前元素先进行过渡 完成之后新元素过渡进入</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/15/路由全局守卫/" class="archive-article-date">
-  <time datetime="2018-08-15T07:54:31.000Z" itemprop="datePublished">Aug 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/路由全局守卫/">路由全局守卫</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/15/关于路由的导航/" class="archive-article-date">
-  <time datetime="2018-08-15T07:52:15.000Z" itemprop="datePublished">Aug 15</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjkxloj5m0001xsmdsgsuanl0" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/关于路由的导航/">关于路由的导航</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/15/前端自动化构建/" class="archive-article-date">
-  <time datetime="2018-08-15T07:17:57.000Z" itemprop="datePublished">Aug 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/前端自动化构建/">前端自动化构建</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/15/vue-cli构建/" class="archive-article-date">
-  <time datetime="2018-08-15T07:02:05.000Z" itemprop="datePublished">Aug 15</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/vue-cli构建/">vue-cli的构建</a>
-    </h1>
   
+    <a href="/2018/08/15/用cli引接口从数据库渲染文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用cli引接口从数据库渲染文件</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         
