@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）3.在文件中有 aritcle文件下的index文件里面有接口">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-16T08:17:21.074Z">
+<meta property="og:updated_time" content="2018-08-16T08:21:58.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用cli引接口从数据库渲染文件">
 <meta name="twitter:description" content="1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）3.在文件中有 aritcle文件下的index文件里面有接口">
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）<br>2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）<br>3.在文件中有 aritcle文件下的index文件里面有接口<br><a id="more"></a><br>4.创建自己的vue-cli文件 并下载 axios vue-axios 并在main.js中引入 引入后用vue.use(vueaxios,axios)声明下<br>5.要跨域 在创建的vue-cli文件下有个config文件里面的index.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable&#123; </span><br><span class="line">  ‘/api’: &#123; </span><br><span class="line">  target: ‘http://localhost:3000‘, //目标接口域名 </span><br><span class="line">  changeOrigin: true, //是否跨域 </span><br><span class="line">  pathRewrite: &#123; </span><br><span class="line">  ‘^/api’: ‘/api’ //重写接口 </span><br><span class="line">  &#125; </span><br><span class="line">&#125;, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>1.首先在 visula studio code 中把git里的文件下载下来 （也可以自己写代码把网站数据爬下来）<br>2.创建数据库 引入文件中的SQL文件 （注意字符集之类的格式）<br>3.在文件中有 aritcle文件下的index文件里面有接口<br><a id="more"></a><br>4.创建自己的vue-cli文件 并下载 axios vue-axios 并在main.js中引入 引入后用vue.use(vueaxios,axios)声明下<br>5.要跨域 在创建的vue-cli文件下有个config文件里面的index.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable&#123; </span><br><span class="line">  &apos;/api&apos;: &#123; </span><br><span class="line">  target: &apos;http://localhost:3000&apos;, //目标接口域名 </span><br><span class="line">  changeOrigin: true, //是否跨域 </span><br><span class="line">  pathRewrite: &#123; </span><br><span class="line">  &apos;^/api&apos;: &apos;/api&apos; //重写接口 </span><br><span class="line">  &#125; </span><br><span class="line">&#125;, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样配置跨域 配置完成后可以在index.html中简单的测试一下<br>6.在main.js中设置axios.defaults.baseURL = ‘<a href="http://localhost:8080/api’" target="_blank" rel="noopener">http://localhost:8080/api’</a> 这样可以默认请求的就是这个地址<br>7.配置路由和组件配置组件跟路由的时候要分析好 结构 当组件模块中引入别的组件模块时注意局部注册<br>8.当请求数据时可以使用同步请求几个数据的方式来请求数据 例:<br> methods: {<br>    getArticleDetail () {<br>      const id = this.$route.params.id<br>      // return this.axios.get(<code>/article/${id}</code>)<br>      this.axios.get(<code>/article/${id}</code>).then(res =&gt; res.data).then(data =&gt; {<br>        if (data.res_code === 200) {<br>          this.article = data.res<br>          // 再发起一个请求<br>          // return this.axios.get(<code>/articles/${data.res.type_id}/rand</code>)<br>          return this.axios.all([this.axios.get(<code>/articles/${data.res.type_id}/rand</code>), this.axios.get(<code>/type/${data.res.type_id}</code>)])<br>        }<br>      }).then(this.axios.spread(({data: articlesRand}, {data: type}) =&gt; {<br>        this.articles = articlesRand.res<br>        this.type = type.res<br>      }))</p>
 <pre><code>  this.axios.get(`/comments/${id}/page/1`).then(res =&gt; res.data).then(data =&gt; {
     this.comments = data.res
@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkwal5be0004awmdir1c4o3k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjkxf4v2m0000y0md2w2ctnns" class="article-share-link">Share</a>
       
       
     </footer>
