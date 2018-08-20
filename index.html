@@ -84,59 +84,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>vuex中的几个属性的示例以及解析<br>vuex - state<br>在这个示例中主要通过 const store 创建了一个新的new Vuex.Store实例然后放在了 app中 所以app中的computed就可以用this.$store来调用里面的东西 所以在div中就可以的到数据 state就是专门用来保存各组件的数据的<br>  示例:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id = &quot;app&quot;&gt;</span><br><span class="line">  &#123;&#123;msg&#125;&#125;</span><br><span class="line">  也可以写&#123;&#123;$store.state.msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"> const store = new Vuex.Store(&#123;</span><br><span class="line">   state:&#123;</span><br><span class="line">     msg:数据</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"> const app = new Vue(&#123;</span><br><span class="line">   el:&apos;#app&apos;,</span><br><span class="line">   computed:&#123;</span><br><span class="line">     msg()&#123;</span><br><span class="line">       return this.$store.state.msg</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>   2.vuex - getter的作用<br>     getter 的作用是对state进行处理,并得到新的数据<br>     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">getter 接受 state作为其第一个参数 目的方便获取state</span><br><span class="line">getter 接受 getters作为其第二个参数</span><br><span class="line"> 例如:getters:&#123;</span><br><span class="line">   watchedMovies(state,getters)&#123;</span><br><span class="line">     return .....</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> 具体事例</span><br><span class="line"> getters: &#123;</span><br><span class="line">   // getters和computed类似</span><br><span class="line">   watchedMovies (state) &#123;</span><br><span class="line">     return state.movies.filter(movie =&gt; movie.watched)</span><br><span class="line">     movies是state中的数组 在这里可以直接通过传参的形式调用 并获取里面的movies数据并通过过滤器返回里面的看过的电影的名字</span><br><span class="line">   &#125;,</span><br><span class="line">   noWatchMovies (state) &#123;</span><br><span class="line">     return state.movies.filter(movie =&gt; !movie.watched)</span><br><span class="line">   &#125;,</span><br><span class="line">   注意这里面的参数的形式</span><br><span class="line">   watchedMoviesLength (state, getters) &#123;</span><br><span class="line">     return getters.watchedMovies.length</span><br><span class="line">   &#125;,</span><br><span class="line">   getMovieById (state) &#123;</span><br><span class="line">     console.log(2)</span><br><span class="line">     return (id) =&gt; &#123;</span><br><span class="line">       return state.movies.filter(movie =&gt; movie.id === id)[0]</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<pre><code>getter不止可以从state中
-获取新的数据 也可以从其他getter中获取新的数据
-getter在正常使用时,获取到的直接就是对应的数据。有些时候需要获取对应条件的数据  不管是state还是getters都只是用来存储数据
-在getter中是用函数的形式对state中的数据进行处理 
-computed 用法是像data一样直接使用 写法是像methods一样
-
-总结:const store = new Vuex.Store({})中两个属性 state是存储数据的 getters是对数据进行处理后返回新的数据的但是不管是不是处理后的数据都需要经过computed里面返回 方便调用
-</code></pre><p>  vuex - mutation</p>
-<pre><code>mutation中接受两个参数 state作为其一个参数 因为mutation就是改变state payload作为其第二个参数 载荷 尽量为对象
-mutation 需要commit触发 $store.commit()
-mutation想要使用,就在对应组件的methods触发的函数中,调用this.$store.commit(&apos;mutation名字&apos;,载荷)
-相当于自定义事件中的$emit 创建mutation的位置相当于自定义事件$on
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mutations:&#123;</span><br><span class="line">  //mutation就是修改state数据</span><br><span class="line">  mutation名字(state,payload)&#123;</span><br><span class="line">    //payload就是commit mutation时传递过来的数据</span><br><span class="line">    //根据payload修改state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-在对应的组件中设置处罚函数,一般是原生事件函数
-methods:{
-  原生事件函数名(){
-    //触发mutation
-    this.$store.commit(&apos;mutation名字&apos;,payload)
-  }
-}
-在提交mutation时可以使用
-  this.$store.commit(&apos;mutation名字&apos;)
-还可以使用对象形式的commit
-  this.$store.commit({
-    type: &apos;mutation名字&apos;,
-    数据1:数据值,
-    数据2:数据值
-  })
-
-  在接收到payload就包含了对象中所有的信息
-  mutation就是用来直接设置state的（只能同步设置）
-
-  vuex - actions
-    所有的异步操作都应该放在action中
-    action就是通过调用mutation里的函数实现异步加载
-    action不能去修改state 所以最后的执行代码永远是commit（mutation）
-    参数context就是个阉割版的store
-    context中包含有
-    commit //触发mutation
-    dispatch
-    getters
-    state 不要再action中修改 只能获取其中的值
-    action中也可以附带载荷,使用方法和mutation一致
-    示例:
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">    const store = new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    addCount (state) &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    addCountAsyncAction (&#123;commit, state&#125;) &#123;</span><br><span class="line">      // action不能去修改state 所以最后的执行代码永远是commit(mutation)</span><br><span class="line">      /* </span><br><span class="line">        参数context就是个阉割版的store</span><br><span class="line">        context中包含有</span><br><span class="line">          commit</span><br><span class="line">          dispatch</span><br><span class="line">          getters</span><br><span class="line">          state  不要在action中修改，只能获取其中的值</span><br><span class="line">        action中也可以附带载荷，使用方法和mutation一致</span><br><span class="line">      */</span><br><span class="line"></span><br><span class="line">      // console.log(context)</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        // 调用commit触发mutation</span><br><span class="line">        commit(&apos;addCount&apos;)</span><br><span class="line">      &#125;, 2000)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  store,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCountAsync () &#123; // 同步</span><br><span class="line">      this.$store.commit(&apos;addCount&apos;) // 触发mutation</span><br><span class="line">    &#125;,</span><br><span class="line">    addCountSync () &#123; // 异步</span><br><span class="line">      this.$store.dispatch(&apos;addCountAsyncAction&apos;)          </span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</code></pre>
+        <p>vuex中的几个属性的示例以及解析<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/20/vuex详情/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/20/vuex详情/" data-id="cjl20u5qj0000c8mdavlf9h58" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/20/vuex详情/" data-id="cjl20ybuu0001y8md2qrtnx8r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +134,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/18/弹性盒子/" data-id="cjl20u5s10002c8mdj5l18evw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/18/弹性盒子/" data-id="cjl20ybv50005y8mdll58z5nw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +176,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/17/日常报错信息/" data-id="cjl20u5sx0008c8mdpuzh0f1g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/17/日常报错信息/" data-id="cjl20ybv80006y8mdc3sfvmsn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +217,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjl20u5s40003c8mdb7aj1408" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/17/vue动画过渡效果实现/" data-id="cjl20ybv30004y8mdovescilc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +258,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjl20u5sv0007c8mdhfegfusr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/用cli引接口从数据库渲染文件/" data-id="cjl20ybva0007y8mdf6srm6yp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +299,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjl20u5sf0006c8mdj3llpgg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/路由全局守卫/" data-id="cjl20ybvc0008y8md90ti1edx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,7 +340,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjl20u5s90004c8mdg7yjoilu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjl20ybuy0002y8mdmf7j498o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +381,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/前端自动化构建/" data-id="cjl20u5sb0005c8mdqtqz1kg6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/前端自动化构建/" data-id="cjl20ybv10003y8mdortn9o25" class="article-share-link">Share</a>
       
       
     </footer>
@@ -466,7 +423,7 @@ methods:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vue-cli构建/" data-id="cjl20u5qy0001c8mdc4e9qjbr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/vue-cli构建/" data-id="cjl20ybul0000y8mdamapkii2" class="article-share-link">Share</a>
       
       
     </footer>
