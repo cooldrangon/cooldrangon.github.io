@@ -5,19 +5,19 @@
   
 
   
-  <title>关于路由的导航 | Hexo</title>
+  <title>vuex模块总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.导航：声明式导航 to=“路由路径”所谓 router-link就是声明式导航">
+  <meta name="description" content="vuex模块总结 模块化的写法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于路由的导航">
-<meta property="og:url" content="http://yoursite.com/2018/08/15/关于路由的导航/index.html">
+<meta property="og:title" content="vuex模块总结">
+<meta property="og:url" content="http://yoursite.com/2018/08/21/vuex模块总结/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.导航：声明式导航 to=“路由路径”所谓 router-link就是声明式导航">
+<meta property="og:description" content="vuex模块总结 模块化的写法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T08:15:43.958Z">
+<meta property="og:updated_time" content="2018-08-21T06:21:45.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于路由的导航">
-<meta name="twitter:description" content="1.导航：声明式导航 to=“路由路径”所谓 router-link就是声明式导航">
+<meta name="twitter:title" content="vuex模块总结">
+<meta name="twitter:description" content="vuex模块总结 模块化的写法">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-关于路由的导航" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-vuex模块总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/15/关于路由的导航/" class="article-date">
-  <time datetime="2018-08-15T07:52:15.000Z" itemprop="datePublished">2018-08-15</time>
+    <a href="/2018/08/21/vuex模块总结/" class="article-date">
+  <time datetime="2018-08-21T03:55:32.000Z" itemprop="datePublished">2018-08-21</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于路由的导航
+      vuex模块总结
     </h1>
   
 
@@ -86,12 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.导航：<br>声明式导航 to=“路由路径”<br>所谓 router-link就是声明式导航<br><a id="more"></a><br>:to = ” ‘topic/’ + xxx.id” 冒号后面的双引号相当于一个script执行环境<br>:to =” {path: ‘路径’, query : { key:value }} ” 相当于 to = ” /路径?key=value ”<br>:to = ” {name : ‘路由名字’,params:{key:value} } ” 相当于 to = “/路径/value”<br>编程式导航：<br>在vue实例内部 你可以通过 router访问路由实例,因此你可以调用this.router.push<br>想要导航到不同的URL,则使用router.push方法。这个方法会向history栈添加一个新的记录。所以 当用户点击浏览器后退按钮时，回到之前的URL</p>
+        <p>vuex模块总结 模块化的写法<br><a id="more"></a><br>模块创建<br>new Vuex.Store({<br>  modules:{<br>    模块名:{</p>
+<pre><code>}
+</code></pre><p>  }<br>})</p>
+<p>分开写<br>const module = {}<br>new Vuex.Store({<br>  modules:{<br>    模块名:module<br>  }<br>})</p>
+<p>每个模块中都可以写<br>state getters mutations actions modules</p>
+<p>单个模块当做一个store即可<br> state<br>  this.$store.state.模块名<br> getters actions mutations 直接会到全局的store中<br> 如果给模块加了 namespaced:true 那么对应的 getters actions mutations会变成 模块名/名字 的形式<br>  同时,在模块中的action中直接commit(‘mutation’) dispatch(‘action’) 指的是模块中的mutation和action<br>  如果想要在模块中调用全局的action mutation 需要使用 commit(‘mutation’,payload,{root:true})<br>  dispatch(‘mutation’,payload,{root:true})<br>  辅助函数如果要使用具有命名空间模块中的内容<br>  mapState({<br>    msg:state =&gt; state.模块名.msg<br>  })<br>  mapState(‘模块名’,[‘msg’])</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/关于路由的导航/" data-id="cjl3daw2c00035cmdnt3a1nsb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/vuex模块总结/" data-id="cjl3daw2500015cmdao1sr0l5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -100,19 +105,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/08/15/路由全局守卫/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          路由全局守卫
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/15/前端自动化构建/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/20/vuex详情/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">前端自动化构建</div>
+      <div class="article-nav-title">vuex详情</div>
     </a>
   
 </nav>
