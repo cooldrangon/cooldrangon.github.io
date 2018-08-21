@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="vuex模块总结 模块化的写法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-21T06:21:45.651Z">
+<meta property="og:updated_time" content="2018-08-21T08:34:02.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex模块总结">
 <meta name="twitter:description" content="vuex模块总结 模块化的写法">
@@ -91,12 +91,14 @@
 </code></pre><p>  }<br>})</p>
 <p>分开写<br>const module = {}<br>new Vuex.Store({<br>  modules:{<br>    模块名:module<br>  }<br>})</p>
 <p>每个模块中都可以写<br>state getters mutations actions modules</p>
-<p>单个模块当做一个store即可<br> state<br>  this.$store.state.模块名<br> getters actions mutations 直接会到全局的store中<br> 如果给模块加了 namespaced:true 那么对应的 getters actions mutations会变成 模块名/名字 的形式<br>  同时,在模块中的action中直接commit(‘mutation’) dispatch(‘action’) 指的是模块中的mutation和action<br>  如果想要在模块中调用全局的action mutation 需要使用 commit(‘mutation’,payload,{root:true})<br>  dispatch(‘mutation’,payload,{root:true})<br>  辅助函数如果要使用具有命名空间模块中的内容<br>  mapState({<br>    msg:state =&gt; state.模块名.msg<br>  })<br>  mapState(‘模块名’,[‘msg’])</p>
+<p> vuex 模块创建详情<br>  1.依然是普通的vue-cli创建 创建完成后需要什么插件就下载什么 如 axios vuex必下<br>  2.在src 下创建一个store文件夹 在里面创建index.js文件 当然 名称可以自定义 想起什么名字起什么名字 无所谓 只要导入导出正确就行<br>  3.在store文件夹下的index.js文件内引入 vue vuex  axios  如下所示 在Vuex.Store中填入state getters mutations actions 并导出store 在main.js中接收<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import Vuex from &apos;vuex&apos;</span><br><span class="line">import axios from &apos;axios&apos;</span><br><span class="line">Vue.use(Vuex)</span><br><span class="line">const state = &#123;</span><br><span class="line">articles:[&#123;title:&apos;1&apos;&#125;]</span><br><span class="line">&#125;</span><br><span class="line">const getters = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">const mutations = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">const actions = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const store = new Vuex.Store(&#123;</span><br><span class="line">  state,getters,mutations,actions</span><br><span class="line">&#125;)</span><br><span class="line">export default store</span><br></pre></td></tr></table></figure></p>
+<p>  vuex就是数据在state中存储 在getters中修改数据并返回新的数据 在mutations中直接修改数据 actions是异步的想要修改数据也得通过mutations修改</p>
+<p>  单个模块当做一个store即可<br> state<br>  this.$store.state.模块名<br> getters actions mutations 直接会到全局的store中<br> 如果给模块加了 namespaced:true 那么对应的 getters actions mutations会变成 模块名/名字 的形式<br>  同时,在模块中的action中直接commit(‘mutation’) dispatch(‘action’) 指的是模块中的mutation和action<br>  如果想要在模块中调用全局的action mutation 需要使用 commit(‘mutation’,payload,{root:true})<br>  dispatch(‘mutation’,payload,{root:true})<br>  辅助函数如果要使用具有命名空间模块中的内容<br>  mapState({<br>    msg:state =&gt; state.模块名.msg<br>  })<br>  mapState(‘模块名’,[‘msg’])</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/vuex模块总结/" data-id="cjl3daw2500015cmdao1sr0l5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/vuex模块总结/" data-id="cjl3gdquv0002x0mds6kiyjrx" class="article-share-link">Share</a>
       
       
     </footer>
