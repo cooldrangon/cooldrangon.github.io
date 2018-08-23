@@ -1,7 +1,7 @@
 ---
 title: vue动画过渡效果实现
 date: 2018-08-17 12:14:23
-tags:
+tags: vue
 ---
 1.首先在父路由中添加transition标签 并给其添加动态的:name属性 然后用transition标签包裹router-view标签 然后在data中return出来动态:name 在style中写 name-enter,name-enter-to,name-enter-active的样式 分别代表刚进入 元素插入前生效的状态 和 在整个过渡效果的状态 和离开前一帧状态
 <!-- more -->

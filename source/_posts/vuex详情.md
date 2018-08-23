@@ -1,7 +1,7 @@
 ---
 title: vuex详情
 date: 2018-08-20 11:57:55
-tags:
+tags: vuex
 ---
 vuex中的几个属性的示例以及解析
 vuex - state

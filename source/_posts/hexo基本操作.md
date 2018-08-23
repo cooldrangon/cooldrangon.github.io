@@ -1,7 +1,7 @@
 ---
 title: hexo基本操作
 date: 2018-08-22 20:02:55
-tags:
+tags: hexo主题
 ---
 hexo中怎么插入图片
 <!--more-->

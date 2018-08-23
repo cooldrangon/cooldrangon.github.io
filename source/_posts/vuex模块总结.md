@@ -1,7 +1,7 @@
 ---
 title: vuex模块总结
 date: 2018-08-21 11:55:32
-tags:
+tags: vuex
 ---
 vuex模块总结 模块化的写法
 <!--more-->
