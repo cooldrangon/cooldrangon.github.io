@@ -29,7 +29,7 @@ template是一个模版 创建一个模版文件夹 在里面创建html css文�
   上面讲了点击获得当前文章列表的postid 怎么把postid传递到子页面中的js中 让子页面根据不同的列表id生成不同的文章详情
    首先 父页面传递的数据应该是(2)所示 因为是父页面跳到子页面所以用navigateTo
     在子页面接收数据时应该 在子页面的js中写 onload:function(option){
-      var postid = option.id 因为在父页面传数据?后面写的是id 所以这里就是option.id
+      var postid = option.id 因为在父页面传数据?后面写的是id 所以这里就是option.id 可以在onload函数中this.data.id=option.id 改变其存储的数值对其页面进行操作
     }
  文章详情页面 根据文章的id来跳转到不同的文章
    如果一个页面的子页面最好写在父页面目录下
