@@ -80,4 +80,3 @@ theme: maupassant
 deploy:
   type: git
   repo: https://github.com/cooldrangon/cooldrangon.github.io.git
-  branch: hexo
